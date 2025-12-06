@@ -22,8 +22,9 @@ combo_##NAME { \
 #define SYMBOLS 2
 #define SYSTEM 3
 #define GAMING 4
-#define KEYBOARD 5
-#define SINGLE 6
+#define GAMINGALT 5
+#define KEYBOARD 6
+#define SINGLE 7
 
 // Behavior Overrides
 &lt {
@@ -149,7 +150,7 @@ combo_##NAME { \
         &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
         &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
-        &mo 6         &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &mo 6
+        &mo 7         &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &mo 7
       > ;
     };
     number_layer {
@@ -178,16 +179,25 @@ combo_##NAME { \
         &kp F1      &kp F2        &kp F3        &kp F4      &kp F5     &kp F6       &kp F7        &kp F8        &kp F9      &kp F10
         &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP   &kp SLCK     &kp KP_NUM    &kp C_RESET   &kp F11     &kp F12
         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_NEXT &kp HOME     &kp PG_DN     &kp PG_UP     &kp END     &kp INSERT
-        &trans      &to 4         &trans        &trans      &to 5      &trans
+        &trans      &to 4         &trans        &trans      &to 6      &trans
       >;
     };
     gaming_layer {
       display-name = "Gaming";
       bindings = <
-        &td_g0     &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O
+        &lt 5 TAB     &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O
         &kp LSHIFT &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L
         &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp N4     &kp N5
-        &kp TAB    &kp SPACE &kp M     &kp ESC   &to 0     &trans
+        &kp LALT    &kp SPACE &kp ESC     &kp ESC   &to 0     &trans
+      >;
+    };
+    gaming_alt_layer {
+      display-name = "GamingAlt";
+      bindings = <
+        &trans    &kp N1     &kp N2     &kp N3      &kp N4     &kp T      &kp Y      &kp U      &kp I       &kp O
+        &trans    &trans     &trans     &trans      &trans     &trans     &trans     &trans     &trans      &trans
+        &trans    &trans     &trans     &trans      &trans     &trans     &trans     &trans     &trans      &trans
+        &trans    &trans     &trans     &trans      &trans     &trans
       >;
     };
     keyboard_layer {
