@@ -196,7 +196,7 @@ combo_##NAME { \
       bindings = <
         &trans    &kp N1     &kp N2     &kp N3      &kp N4     &kp T      &kp Y      &kp U      &kp I       &kp O
         &trans    &trans     &trans     &trans      &kp G      &trans     &trans     &trans     &trans      &trans
-        &trans    &trans     &trans     &trans      &kp m     &trans     &trans     &trans     &trans      &trans
+        &trans    &trans     &trans     &trans      &kp M      &trans     &trans     &trans     &trans      &trans
         &trans    &trans     &trans     &trans      &trans     &trans
       >;
     };
