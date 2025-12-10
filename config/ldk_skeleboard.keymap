@@ -185,19 +185,19 @@ combo_##NAME { \
     gaming_layer {
       display-name = "Gaming";
       bindings = <
-        &mo 5       &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O
-        &kp LSHIFT &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L
-        &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp N4     &kp N5
-        &kp LALT    &kp SPACE &kp ESC     &kp ESC   &to 0     &trans
+        &kp TAB    &kp Q     &kp W     &kp E     &kp R     &kp Y     &kp U     &kp I     &kp O      &kp P
+        &kp LSHIFT &kp A     &kp S     &kp D     &kp F     &kp H     &kp J     &kp K     &kp L      &kp BSPC
+        &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp N     &kp M     &kp COMMA &kp DOT    &kp DEL
+        &kp LALT   &kp SPACE &mo 5     &kp ESC   &to 0     &trans
       >;
     };
     gaming_alt_layer {
       display-name = "GamingAlt";
       bindings = <
-        &trans    &kp N1     &kp N2     &kp N3      &kp N4     &kp T      &kp Y      &kp U      &kp I       &kp O
-        &kp TAB    &trans     &trans     &trans      &kp G     &trans     &trans     &trans     &trans      &trans
-        &trans    &trans     &trans     &trans      &kp M      &trans     &trans     &trans     &trans      &trans
-        &trans    &trans     &trans     &trans      &trans     &trans
+        &kp ESC    &kp N1       &kp N2       &kp N3      &kp T     &trans     &trans     &kp UP      &trans      &trans
+        &trans     &kp N4       &kp N5       &kp N6      &kp G     &trans     &kp LEFT   &kp DOWN    &kp RIGHT   &trans
+        &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans      &kp B     &trans     &trans     &trans      &trans      &trans
+        &trans     &trans     &trans     &trans      &trans    &trans
       >;
     };
     keyboard_layer {
