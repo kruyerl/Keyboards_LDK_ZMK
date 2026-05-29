@@ -18,7 +18,7 @@ combo_##NAME { \
 };
 
 #define BASE 0
-#define NUMBERS 1
+#define ALT 1
 #define SYMBOLS 2
 #define SYSTEM 3
 #define GAMING 4
@@ -38,25 +38,18 @@ combo_##NAME { \
 
 / {
   macros {
-    // Spotlight
-    spotlight: spotlight {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_press &kp LGUI>, <&macro_tap &kp SPACE>, <&macro_release &kp LGUI>; 
-    };
     // Alt + Tab
     alt_tab: alt_tab {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&macro_press &kp LALT>, <&macro_tap &kp TAB>, <&macro_release &kp LALT>;
     };
-// Ctrl + Alt + Del
+    // Ctrl + Alt + Del
     ctrl_alt_del: ctrl_alt_del {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&macro_press &kp LCTRL &kp LALT>, <&macro_tap &kp DEL>, <&macro_release &kp LCTRL &kp LALT>;
     };
-
     // Alt + F4
     alt_ff: alt_ff {
       compatible = "zmk,behavior-macro";
@@ -110,14 +103,27 @@ combo_##NAME { \
   };
 
   behaviors {
-    hm: homerow_mods {  
+    lhm: left_homerow_mods {  
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
-      tapping-term-ms = <400>;
-      require-prior-idle-ms = <125>;
-      quick-tap-ms = <300>;
-      flavor = "hold-preferred";
+      flavor = "balanced";
+      require-prior-idle-ms = <150>;
+      tapping-term-ms = <280>;
+      quick-tap-ms = <175>;
       bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <16 17 18 19>; // right-hand home row mod positions
+      hold-trigger-on-release;
+    };
+    rhm: right_homerow_mods {  
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      require-prior-idle-ms = <150>;
+      tapping-term-ms = <280>;
+      quick-tap-ms = <175>;
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <10 11 12 13>; // left-hand home row mod positions
+      hold-trigger-on-release;
     };
     ent: enter_mods {  
       compatible = "zmk,behavior-hold-tap";
@@ -147,19 +153,19 @@ combo_##NAME { \
     base_layer {
       display-name = "Base";
       bindings = <
-        &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
-        &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
-        &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
-        &mo 7         &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &mo 7
+        &kp Q         &kp W         &kp E       &kp R       &kp T         &kp Y     &kp U       &kp I       &kp O       &kp P
+        &lhm LSHIFT A  &lhm LCTRL S   &lhm LALT D  &lhm LGUI F  &kp G         &kp H     &rhm RGUI J  &rhm RALT K  &rhm RCTRL L &rhm RSHIFT BSPC
+        &kp Z         &kp X         &kp C       &kp V       &kp B         &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
+                                    &mo 7       &kp SPACE   &lt 1 TAB     &lt 2 ESC &ent LSHIFT ENTER   &mo 8
       > ;
     };
-    number_layer {
-      display-name = "Numbers";
+    alt_layer {
+      display-name = "Alt";
       bindings = <
-        &kp N1      &kp N2      &kp N3      &kp  N4       &kp N5        &kp N6          &kp N7          &kp N8            &kp N9          &kp N0
-        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI      &alt_ff       &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
-        &kp ESC     &kp CAPS    &kp PSCRN   &kp DEL       &td_mouse0    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
-        &trans      &trans      &trans      &trans        &trans        &trans
+        &kp N1      &kp N2      &kp N3      &kp  N4     &kp N5            &kp N6          &kp N7          &kp N8            &kp N9          &kp N0
+        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    &alt_ff           &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
+        &kp ESC     &kp CAPS    &kp PSCRN   &kp DEL     &td_mouse0        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
+                                &trans      &trans      &trans            &trans          &trans          &trans
       >;
 
     };
@@ -169,17 +175,17 @@ combo_##NAME { \
         &kp EXCL     &kp QMARK    &kp SQT     &kp DQT     &kp GRAVE      &kp CARET     &kp AMPS      &kp TILDE     &kp UNDER     &kp PIPE
         &kp LPAR     &kp LBKT     &kp LT      &kp LBRC    &kp COLON      &kp EQUAL     &kp PLUS      &kp MINUS     &kp STAR     &kp FSLH
         &kp RPAR     &kp RBKT     &kp GT      &kp RBRC    &kp SEMI       &kp AT        &kp POUND     &kp DLLR     &kp PRCNT     &kp BSLH
-        &trans       &trans       &trans      &trans      &trans         &trans
+                                  &trans      &trans      &trans         &trans        &trans        &trans
       >;
 
     };
     system_layer {
       display-name = "System";
       bindings = <
-        &kp F1      &kp F2        &kp F3        &kp F4      &kp F5     &kp F6       &kp F7        &kp F8        &kp F9      &kp F10
-        &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP   &kp SLCK     &kp KP_NUM    &kp C_RESET   &kp F11     &kp F12
-        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_NEXT &kp HOME     &kp PG_DN     &kp PG_UP     &kp END     &kp INSERT
-        &trans      &to 4         &trans        &trans      &to 6      &trans
+        &kp F1      &kp F2        &kp F3        &kp F4      &kp F5        &kp F6       &kp F7        &kp F8        &kp F9      &kp F10
+        &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP      &kp SLCK     &kp KP_NUM    &kp C_RESET   &kp F11     &kp F12
+        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_NEXT    &kp HOME     &kp PG_DN     &kp PG_UP     &kp END     &kp INSERT
+                                  &trans        &to 4       &trans        &trans       &to 6         &trans
       >;
     };
     gaming_layer {
@@ -212,12 +218,11 @@ combo_##NAME { \
     single_layer {
       display-name = "Single";
       bindings = <
-        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5
-        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &trans &trans &trans &trans &trans   
-        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &trans &trans &trans  &trans &trans 
-        &trans &trans &trans                                                    &trans &trans &trans  
+        &kp ESC   &alt_tab    &kp UP    &win_tab    &kp C_VOL_UP      &mkp MB1     &trans         &mmv MOVE_UP    &trans          &trans       
+        &alt_tab  &kp LEFT    &kp DOWN  &kp RIGHT   &kp C_VOL_DN      &mkp MB2     &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT &trans  
+        &trans    &trans      &trans    &trans      &kp C_MUTE        &mkp MB3     &msc SCRL_UP   &msc SCRL_DOWN  &trans          &trans 
+        &trans    &trans      &trans                                  &trans       &trans         &trans  
       >;
     };
   };
 };
-

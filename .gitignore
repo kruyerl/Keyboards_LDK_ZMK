@@ -1,0 +1,9 @@
+# Local Zephyr build artifacts and environment
+build/
+.venv/
+.west/
+zephyr-sdk/
+modules/
+optional/
+# Ignore local Zephyr checkout files except tracked module.yml
+zephyr/*

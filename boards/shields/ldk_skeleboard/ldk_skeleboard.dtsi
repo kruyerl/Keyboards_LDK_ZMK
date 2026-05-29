@@ -4,6 +4,11 @@
 / {
   chosen {
     zmk,physical-layout = &layout;
+    zmk,pointing = &pointing;
+  };
+
+  pointing: pointing {
+    compatible = "zmk,pointing-device";
   };
 
   kscan: kscan {

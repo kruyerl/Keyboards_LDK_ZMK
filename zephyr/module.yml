@@ -1,3 +1,7 @@
+name: zmk-keyboard-ldk
 build:
+  cmake: module-cmake
+  kconfig: Kconfig
   settings:
     board_root: .
+    dts_root: boards
