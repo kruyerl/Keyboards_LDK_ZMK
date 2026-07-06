@@ -124,6 +124,17 @@ combo_##NAME { \
       hold-trigger-key-positions = <10 11 12 13>; // left-hand home row mod positions
       hold-trigger-on-release;
     };
+    rh_bs: right_homerow_backspace {  
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <180>;
+      quick-tap-ms = <200>; 
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <10 11 12 13>; // Keep left hand triggers
+      hold-trigger-on-release;
+      // Notice: require-prior-idle-ms is completely removed here
+    };
     ent: enter_mods {  
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
@@ -152,7 +163,7 @@ combo_##NAME { \
     base_layer {      display-name = "Base";
       bindings = <
         &kp Q         &kp W         &kp E       &kp R       &kp T         &kp Y     &kp U       &kp I       &kp O       &kp P
-        &lhm LSHIFT A  &lhm LCTRL S   &lhm LALT D  &lhm LGUI F  &kp G     &kp H     &rhm RGUI J  &rhm RALT K  &rhm RCTRL L &rhm RSHIFT BSPC
+        &lhm LSHIFT A  &lhm LCTRL S   &lhm LALT D  &lhm LGUI F  &kp G     &kp H     &rhm RGUI J  &rhm RALT K  &rhm RCTRL L &rh_bs RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B         &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
                                     &win_tab    &kp SPACE   &lt 1 TAB     &lt 2 ESC &ent LSHIFT ENTER   &td_mouse0 
       > ;
