@@ -1,6 +1,0 @@
-config SHIELD_LDK_FLATBOARD_LEFT
-    def_bool $(shields_list_contains,ldk_flatboard_left)
-
-config SHIELD_LDK_FLATBOARD_RIGHT
-    def_bool $(shields_list_contains,ldk_flatboard_right)
-    
