@@ -1,6 +1,0 @@
-config SHIELD_LDK_SKELETOR_LEFT
-    def_bool $(shields_list_contains,ldk_skeletor_left)
-
-config SHIELD_LDK_SKELETOR_RIGHT
-    def_bool $(shields_list_contains,ldk_skeletor_right)
-    

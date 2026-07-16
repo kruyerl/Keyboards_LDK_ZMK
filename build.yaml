@@ -4,8 +4,4 @@ include:
   - board: nice_nano//zmk
     shield: ldk_skeleboard_right
   - board: nice_nano//zmk
-    shield: ldk_skeletor_left
-  - board: nice_nano//zmk
-    shield: ldk_skeletor_right
-  - board: nice_nano//zmk
     shield: settings_reset
