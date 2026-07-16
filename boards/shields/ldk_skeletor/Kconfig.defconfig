@@ -1,4 +1,4 @@
-if SHIELD_LDK_SKELETOR_LEFT
+if SHIELD_LDK_SKELETOR_RIGHT
 
 config ZMK_KEYBOARD_NAME 
   default "ldk_skeletor"
